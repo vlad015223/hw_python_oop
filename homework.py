@@ -1,10 +1,26 @@
 class InfoMessage:
     """Информационное сообщение о тренировке."""
-    pass
+    def __init__(self, training_type: str, duration: float, distance: float,
+        speed: float, calories: float) -> None:
+        self.training_type = training_type
+        self.duration = duration
+        self.distance = distance
+        self.speed = speed
+        self.calories = calories
+
+    def get_message(self) -> str:
+        """Возвращает строку сообщения"""
+        return (f'Тип тренировки: {self.training_type};'
+                'Длительность: {self.duration} ч.;'
+                'Дистанция: {self.distance} км;'
+                'Ср. скорость: {self.speed} км/ч;'
+                'Потрачено ккал: {self.calories}.')
 
 
 class Training:
     """Базовый класс тренировки."""
+    LEN_STEP = float = 0.65
+    M_IN_KM = int = 1000
 
     def __init__(self,
                  action: int,
@@ -15,20 +31,21 @@ class Training:
 
     def get_distance(self) -> float:
         """Получить дистанцию в км."""
-        pass
+        #action * LEN_STEP / M_IN_KM, action = количество действий(шаги, гребки)
 
     def get_mean_speed(self) -> float:
         """Получить среднюю скорость движения."""
-        pass
+        #преодоленная_дистанция_за_тренировку / время_тренировки 
 
     def get_spent_calories(self) -> float:
         """Получить количество затраченных калорий."""
+        #Логика подсчета калорий для каждого вида тренировки будет своя, 
+        #поэтому в базовом классе не нужно описывать поведение метода, в его теле останется ключевое слово pass.
         pass
 
     def show_training_info(self) -> InfoMessage:
         """Вернуть информационное сообщение о выполненной тренировке."""
-        pass
-
+        #возвращает объект класса сообщения
 
 class Running(Training):
     """Тренировка: бег."""
